@@ -29,7 +29,10 @@ pr:
 
 jobs:
 - job: 'build'
-  pool: 'onnxruntime-Win2022-GPU-T4'
+  pool: 
+    name: 'onnxruntime-Win2022-GPU-T4'
+    demands:
+      - ImageVersionOverride -equals 1.0.367516
   variables:
     MsbuildArguments: '-detailedsummary -maxcpucount -consoleloggerparameters:PerformanceSummary'
     EnvSetupScript: setup_env_trt.bat
